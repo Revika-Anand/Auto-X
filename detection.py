@@ -3,11 +3,13 @@ import numpy as np
 import cv2
 from register import *
 
+
+# executes the code in file register.py
 root = Tk()
 obj = Register(root)
 root.mainloop()
 
-class extra:
+class extra:                   # imports required data from register.py
     def find(self):
         self.o = obj.coord
         return self.o
@@ -18,7 +20,7 @@ mp_pose = mp.solutions.pose
 # video
 cap = cv2.VideoCapture(0)
 ## Setup mediapipe instance
-with mp_pose.Pose(min_detection_confidence=0.75, min_tracking_confidence=0.75) as pose:
+with mp_pose.Pose(min_detection_confidence = 0.75, min_tracking_confidence = 0.75) as pose:
     while cap.isOpened():
         ret, frame = cap.read()
         
@@ -51,7 +53,7 @@ with mp_pose.Pose(min_detection_confidence=0.75, min_tracking_confidence=0.75) a
     cap.release()
     cv2.destroyAllWindows()
 
-    coords = extra().find()
+    coords = extra().find()    # contains the list of indexes of all required joints
     # print(coords)
     # for i in coords:
     #     print(landmarks[i])
