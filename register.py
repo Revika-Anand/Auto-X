@@ -7,7 +7,7 @@ class Register:
     def __init__(self, root):
         self.root = root
         self.root.title("Welcome to Auto-X")
-        self.root.geometry("1250x650+0+0")
+        self.root.geometry("1250x650+0+0")         # defines size and coordinates of the window that will appear
         self.coord = list()
 
         #--------bg img---------
@@ -63,10 +63,10 @@ class Register:
         btn = Button(frame1, image = self.btn_img, bd = 0, cursor = "hand2", bg = "white", command = self.register_data).place(x = 200, y = 400)
 
     def register_data(self):
-        if self.txt_fname.get() == "" or self.txt_email.get() == "" or self.drop_xray.get() == "Select":
-            messagebox.showerror("Error", "All fields are Required", parent = self.root)
-        elif len(self.txt_contact.get()) != 10:
-            messagebox.showerror("Error", "Please enter a valid phone number", parent = self.root)
+        if self.drop_xray.get() == "Select":
+            messagebox.showerror("Error", "You must select the anatomy for X-ray.", parent = self.root)
+        # elif len(self.txt_contact.get()) != 10:
+        #     messagebox.showerror("Error", "Please enter a valid phone number", parent = self.root)
         else:
             messagebox.showinfo("Success", "Patient Information Recorded", parent = self.root)   
        
