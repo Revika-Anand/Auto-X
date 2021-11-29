@@ -1,6 +1,8 @@
 import mediapipe as mp
 import numpy as np
 import cv2
+import time
+from tkinter import messagebox
 from register import *
 
 # executes the code in file register.py
@@ -12,17 +14,29 @@ class extra:                   # imports required data from register.py
     def find(self):
         self.o = obj.coord
         return self.o
+    def number(self):
+        self.n = obj.number
+        return self.n
 
 mp_drawing = mp.solutions.drawing_utils
 mp_pose = mp.solutions.pose
 
 # video
 cap = cv2.VideoCapture(0)
+
+## capture image of patient for records
+ret, frame = cap.read()
+messagebox.showinfo("Important!", "Please stand still, an image will be taken in 5 seconds.")
+time.sleep(5)
+p_no = extra().number()
+img_name = "{}.png".format(p_no)
+cv2.imwrite(img_name, frame)
+
 ## Setup mediapipe instance
 with mp_pose.Pose(min_detection_confidence = 0.75, min_tracking_confidence = 0.75) as pose:
     while cap.isOpened():
-        ret, frame = cap.read()
-        
+        ret, frame = cap.read()       
+
         # Recolor image to RGB
         image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         image.flags.writeable = False

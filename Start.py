@@ -25,6 +25,7 @@ for i in visi_list:               # checks if the required joints are visible or
         quit()
 
 messagebox.showinfo("Success", "Required joints are visible X-ray will be taken shortly please do not move")
+
 #print(rq_coord_list)
 
 
