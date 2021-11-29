@@ -3,7 +3,6 @@ import numpy as np
 import cv2
 from register import *
 
-
 # executes the code in file register.py
 root = Tk()
 obj = Register(root)

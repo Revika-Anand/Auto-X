@@ -2,6 +2,8 @@ from tkinter import *
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
 import switch_case as sc
+import string
+import random
 
 class Register:
     def __init__(self, root):
@@ -9,6 +11,7 @@ class Register:
         self.root.title("Welcome to Auto-X")
         self.root.geometry("1250x650+0+0")         # defines size and coordinates of the window that will appear
         self.coord = list()
+        self.number = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 10))
 
         #--------bg img---------
         self.bg = ImageTk.PhotoImage(file = "images/bg.jpg")
@@ -27,13 +30,13 @@ class Register:
         text = Label(frame1, text = "Please enter the details of the patient", font = ("times new roman", 10), bg = "white").place(x = 52, y = 70)
 
         #--Name
-        f_name = Label(frame1, text = "First Name", font = ("times new roman", 15), bg = "white", fg="darkgray").place(x = 50, y = 100)
+        f_name = Label(frame1, text = "Name", font = ("times new roman", 15), bg = "white", fg="darkgray").place(x = 50, y = 100)
         self.txt_fname = Entry(frame1, font = ("times new roman", 15), bg = "lightgray")
         self.txt_fname.place(x = 50, y = 130, width = 200)
 
-        l_name = Label(frame1, text = "Last Name", font = ("times new roman", 15), bg = "white", fg="darkgray").place(x = 300, y = 100)
-        self.txt_lname = Entry(frame1, font = ("times new roman", 15), bg = "lightgray")
-        self.txt_lname.place(x = 300, y = 130, width = 200)
+        p_no = Label(frame1, text = "Patient Number", font = ("times new roman", 15), bg = "white", fg="darkgray").place(x = 300, y = 100)
+        self.txt_pno = Label(frame1, text = str(self.number), font = ("times new roman", 15), bg = "lightgray")
+        self.txt_pno.place(x = 300, y = 130, width = 200)
 
         #--Contact
         contact = Label(frame1, text = "Contact No.", font = ("times new roman", 15), bg = "white", fg="darkgray").place(x = 50, y = 170)
